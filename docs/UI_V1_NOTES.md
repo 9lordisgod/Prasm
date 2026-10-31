@@ -1,15 +1,22 @@
 # UI v1 notes (apps/mobile)
 
-Revision of the first Expo shell toward Duolingo learning patterns with a casual Solana Mobile feel.
+## v1.1 — Duolingo-faithful path + curriculum wired
 
-| Area | Before | After |
+Color choice: lesson CTAs use classic Duolingo green `#58CC02` with ledge `#46A302`; Solana purple `#9945FF` stays as a secondary accent (Unit 1 banner, kickers). Each unit banner has its own color.
+
+| Area | 5b6f49f | v1.1 |
 |---|---|---|
-| Palette | Zinc black/gray | Navy `#131F24` / `#1F2C34`, purple `#9945FF` CTA, green `#14F195` progress, orange `#FF9600` streak, yellow `#FFC800` XP |
-| Tokens | Colors only | Adds `space` and `radius` tokens |
-| Home | Three stat cards | HUD chips (streak, XP, goal bar), "gm" greeting, up-next lesson card, ledge "Start a lesson" button, safety tip card |
-| Paths | Flat list of titles | Winding vertical skill nodes (72 px circles, left/right offsets), current node with START bubble, locked nodes |
-| Wallet | Plain buttons | Card with ledge Connect and ghost Disconnect, friendly copy, Seed Vault reassurance |
-| Tab bar | Text-only | Emoji icon + label, active pill outline (Learn, Paths, Wallet) |
-| Buttons | TouchableOpacity text | `PrimaryButton` with face + darker bottom ledge, press collapses ledge |
+| Paths tab | 6 nodes, one per path title | Unit banner per path (UNIT n, title, blurb, FREE/PRO) + zigzag trail with one node per micro-lesson (17 total) |
+| Curriculum | `stubs/paths.ts` titles only | `src/data/curriculum.ts` mirrors Prasm-content e645998: 6 paths, 17 lessons, phil-01 + sol-01 questions embedded |
+| Lesson player | none | `LessonScreen`: tip → MCQ → CHECK → feedback → CONTINUE → end card (+10 XP, score) |
+| Node taps | none | Current seeded → lesson; skeleton → "Coming soon" sheet with teaser; locked/PRO → info sheet |
+| Unlock | static | phil-01 and sol-01 current by default; finishing a lesson marks it done and unlocks the next |
+| Home | static up-next | Up next = first unfinished seeded lesson; Start opens it |
+| CTA color | purple | Duo green; wrong answers use red ledge |
+| Tab bar | purple active | teal active outline |
 
-Still stubs: progress values, path unlock state, wallet connect (returns unavailable). No trading, signing, or custody. English only.
+Still stubs: progress not persisted, wallet connect unavailable, 15 lessons skeleton-only. Not run on device in this revision (no expo start / typecheck). No trading, signing, or custody. English only.
+
+## v1 (5b6f49f)
+
+Navy palette, HUD chips, ledge buttons, winding path-title nodes, emoji tab bar, connect-only wallet.
