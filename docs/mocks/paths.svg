@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="640" viewBox="0 0 320 640" font-family="Inter,Helvetica,Arial,sans-serif">
+  <rect x="4" y="4" width="312" height="632" rx="36" fill="#18181b" stroke="#3f3f46" stroke-width="4"/>
+  <rect x="120" y="18" width="80" height="8" rx="4" fill="#3f3f46"/>
+  <text x="28" y="72" fill="#fafafa" font-size="26" font-weight="700">Paths</text>
+  <text x="28" y="96" fill="#a1a1aa" font-size="14">Six learning paths</text>
+  <g font-size="15" fill="#fafafa">
+    <rect x="24" y="116" width="272" height="60" rx="14" fill="#27272a"/><text x="44" y="152">1  Philosophy</text>
+    <rect x="24" y="184" width="272" height="60" rx="14" fill="#27272a"/><text x="44" y="220">2  Bitcoin Literacy</text>
+    <rect x="24" y="252" width="272" height="60" rx="14" fill="#27272a"/><text x="44" y="288">3  Privacy &amp; OpSec</text>
+    <rect x="24" y="320" width="272" height="60" rx="14" fill="#27272a"/><text x="44" y="356">4  Solana Fundamentals</text>
+    <rect x="24" y="388" width="272" height="60" rx="14" fill="#27272a"/><text x="44" y="424">5  Seeker Safety</text>
+    <rect x="24" y="456" width="272" height="60" rx="14" fill="#27272a"/><text x="44" y="492">6  On-Chain Reading</text>
+  </g>
+  <line x1="4" y1="566" x2="316" y2="566" stroke="#3f3f46"/>
+  <text x="60" y="604" fill="#71717a" font-size="13" text-anchor="middle">Home</text>
+  <text x="160" y="604" fill="#fafafa" font-size="13" text-anchor="middle">Paths</text>
+  <text x="260" y="604" fill="#71717a" font-size="13" text-anchor="middle">Wallet</text>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="640" viewBox="0 0 320 640" font-family="Inter,Helvetica,Arial,sans-serif">
+  <rect x="4" y="4" width="312" height="632" rx="36" fill="#18181b" stroke="#3f3f46" stroke-width="4"/>
+  <rect x="120" y="18" width="80" height="8" rx="4" fill="#3f3f46"/>
+  <text x="28" y="72" fill="#fafafa" font-size="26" font-weight="700">Wallet</text>
+  <text x="28" y="96" fill="#a1a1aa" font-size="14">Optional. Progress sync only.</text>
+  <rect x="24" y="124" width="272" height="90" rx="16" fill="#27272a"/>
+  <text x="40" y="156" fill="#a1a1aa" font-size="13">Status</text>
+  <circle cx="46" cy="186" r="6" fill="#71717a"/>
+  <text x="60" y="191" fill="#fafafa" font-size="16">Unavailable (stub)</text>
+  <rect x="24" y="236" width="272" height="56" rx="28" fill="#fafafa"/>
+  <text x="160" y="270" fill="#18181b" font-size="16" font-weight="700" text-anchor="middle">Connect</text>
+  <rect x="24" y="304" width="272" height="56" rx="28" fill="none" stroke="#52525b" stroke-width="2"/>
+  <text x="160" y="338" fill="#71717a" font-size="16" font-weight="600" text-anchor="middle">Disconnect</text>
+  <text x="28" y="400" fill="#a1a1aa" font-size="12">Keys stay in your wallet. Prasm never</text>
+  <text x="28" y="418" fill="#a1a1aa" font-size="12">asks for a seed phrase.</text>
+  <line x1="4" y1="566" x2="316" y2="566" stroke="#3f3f46"/>
+  <text x="60" y="604" fill="#71717a" font-size="13" text-anchor="middle">Home</text>
+  <text x="160" y="604" fill="#71717a" font-size="13" text-anchor="middle">Paths</text>
+  <text x="260" y="604" fill="#fafafa" font-size="13" text-anchor="middle">Wallet</text>
+</svg>
