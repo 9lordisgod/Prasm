@@ -1,26 +1,30 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { PathNode, NodeState } from '../components/PathNode';
 import { PATH_TITLES } from '../stubs/paths';
-import { colors } from '../theme';
+import { colors, radius, space } from '../theme';
+
+const EMOJI = ['📜', '🟠', '🕶️', '◎', '📱', '🔎'];
+const OFFSETS = [0, 60, 90, 60, 0, -60, -90, -60];
 
 export function PathsScreen() {
   return (
-    <View style={{ flex: 1 }}>
-      <Text style={s.title}>Paths</Text>
-      <FlatList
-        data={PATH_TITLES}
-        keyExtractor={(t) => t}
-        renderItem={({ item }) => (
-          <View style={s.row}>
-            <Text style={s.text}>{item}</Text>
-          </View>
-        )}
-      />
-    </View>
+    <ScrollView contentContainerStyle={{ paddingBottom: space.xl }}>
+      <View style={s.banner}>
+        <Text style={s.bannerKicker}>YOUR JOURNEY</Text>
+        <Text style={s.bannerTitle}>Six paths, one tap at a time</Text>
+      </View>
+      {PATH_TITLES.map((title, i) => {
+        const state: NodeState = i === 0 ? 'current' : 'locked';
+        return <PathNode key={title} emoji={EMOJI[i] ?? '⭐'} label={title} state={state} offset={OFFSETS[i % OFFSETS.length]} />;
+      })}
+      <Text style={s.footer}>Lessons live in the private content pack. More nodes unlock as you learn.</Text>
+    </ScrollView>
   );
 }
 
 const s = StyleSheet.create({
-  title: { color: colors.text, fontSize: 28, fontWeight: '700', marginBottom: 20 },
-  row: { backgroundColor: colors.card, borderColor: colors.border, borderWidth: 1, borderRadius: 12, padding: 16, marginBottom: 10 },
-  text: { color: colors.text, fontSize: 16 },
+  banner: { backgroundColor: colors.primary, borderRadius: radius.lg, padding: space.md, borderBottomWidth: 4, borderBottomColor: colors.primaryLedge, marginBottom: space.lg },
+  bannerKicker: { color: '#E9D8FF', fontWeight: '800', fontSize: 12, letterSpacing: 1 },
+  bannerTitle: { color: '#FFFFFF', fontWeight: '800', fontSize: 20, marginTop: 4 },
+  footer: { color: colors.muted, textAlign: 'center', marginTop: space.lg },
 });
