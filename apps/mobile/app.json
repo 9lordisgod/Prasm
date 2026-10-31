@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "Prasm",
+    "slug": "prasm",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#09090b",
+    "ios": { "bundleIdentifier": "com.prasm.app" },
+    "android": { "package": "com.prasm.app" }
+  }
+}
