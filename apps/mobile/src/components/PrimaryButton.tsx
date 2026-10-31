@@ -1,35 +1,34 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { colors, radius } from '../theme';
 
-type Variant = 'primary' | 'green' | 'ghost';
-type Props = { label: string; onPress?: () => void; variant?: Variant; disabled?: boolean };
-
-const faces: Record<Variant, [string, string, string]> = {
+type Variant = 'cta' | 'primary' | 'ghost' | 'wrong' | 'disabled';
+const FACE: Record<Variant, [string, string, string]> = {
+  cta: [colors.cta, colors.ctaLedge, '#FFFFFF'],
   primary: [colors.primary, colors.primaryLedge, '#FFFFFF'],
-  green: [colors.green, colors.greenLedge, '#0B1A12'],
-  ghost: [colors.surface, colors.border, colors.text],
+  wrong: [colors.wrong, colors.wrongLedge, '#FFFFFF'],
+  ghost: [colors.surface, colors.border, colors.teal],
+  disabled: [colors.locked, colors.lockedLedge, colors.muted],
 };
 
-// Chunky "3D" button: colored face sitting on a darker ledge that collapses on press.
-export function PrimaryButton({ label, onPress, variant = 'primary', disabled }: Props) {
-  const [face, ledge, ink] = disabled ? [colors.locked, colors.lockedLedge, colors.muted] : faces[variant];
+// Chunky Duolingo "ledge" button: face sits on a darker bottom ledge that collapses on press.
+export function PrimaryButton({ label, onPress, variant = 'cta', disabled }: { label: string; onPress?: () => void; variant?: Variant; disabled?: boolean }) {
+  const v: Variant = disabled ? 'disabled' : variant;
+  const [face, ledge, text] = FACE[v];
   return (
-    <Pressable onPress={onPress} disabled={disabled}>
+    <Pressable onPress={disabled ? undefined : onPress} accessibilityRole="button">
       {({ pressed }) => (
-        <Text
-          style={[
-            s.btn,
-            { backgroundColor: face, borderBottomColor: ledge, color: ink },
-            pressed && { borderBottomWidth: 0, marginTop: 4 },
-          ]}
-        >
-          {label.toUpperCase()}
-        </Text>
+        <View style={[s.ledge, { backgroundColor: ledge, paddingBottom: pressed ? 0 : 4, marginTop: pressed ? 4 : 0 }]}>
+          <View style={[s.face, { backgroundColor: face, borderColor: v === 'ghost' ? colors.border : face }]}>
+            <Text style={[s.label, { color: text }]}>{label.toUpperCase()}</Text>
+          </View>
+        </View>
       )}
     </Pressable>
   );
 }
 
 const s = StyleSheet.create({
-  btn: { textAlign: 'center', fontWeight: '800', fontSize: 16, letterSpacing: 0.8, paddingVertical: 14, borderRadius: radius.md, borderBottomWidth: 4, overflow: 'hidden' },
+  ledge: { borderRadius: radius.md },
+  face: { borderRadius: radius.md, paddingVertical: 14, alignItems: 'center', borderWidth: 2 },
+  label: { fontSize: 16, fontWeight: '800', letterSpacing: 0.8 },
 });

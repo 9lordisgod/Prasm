@@ -1,28 +1,26 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { colors, radius, space } from '../theme';
 
-type Props = { streakDays: number; totalXp: number; todayXp: number; dailyGoalXp: number };
-
-export function Hud({ streakDays, totalXp, todayXp, dailyGoalXp }: Props) {
-  const pct = Math.min(1, dailyGoalXp ? todayXp / dailyGoalXp : 0);
+// Top HUD chips like Duolingo: streak flame, XP gem, daily goal bar.
+export function Hud({ streak, xp, goal, goalTarget }: { streak: number; xp: number; goal: number; goalTarget: number }) {
+  const pct = Math.min(1, goalTarget ? goal / goalTarget : 0);
   return (
     <View style={s.row}>
-      <View style={s.chip}><Text style={[s.chipText, { color: colors.streak }]}>🔥 {streakDays}</Text></View>
-      <View style={s.chip}><Text style={[s.chipText, { color: colors.xp }]}>⚡ {totalXp} XP</Text></View>
-      <View style={[s.chip, s.goal]}>
-        <Text style={s.goalLabel}>🎯 {todayXp}/{dailyGoalXp}</Text>
-        <View style={s.track}><View style={[s.fill, { width: `${pct * 100}%` }]} /></View>
+      <Text style={[s.chip, { color: colors.streak }]}>🔥 {streak}</Text>
+      <Text style={[s.chip, { color: colors.xp }]}>⚡ {xp} XP</Text>
+      <View style={s.goal}>
+        <View style={s.bar}><View style={[s.fill, { width: `${pct * 100}%` }]} /></View>
+        <Text style={s.goalText}>{goal}/{goalTarget}</Text>
       </View>
     </View>
   );
 }
 
 const s = StyleSheet.create({
-  row: { flexDirection: 'row', gap: space.sm, marginBottom: space.md },
-  chip: { backgroundColor: colors.surface, borderRadius: radius.pill, paddingVertical: 8, paddingHorizontal: 14, borderWidth: 2, borderColor: colors.border },
-  chipText: { fontWeight: '800', fontSize: 15 },
-  goal: { flex: 1, justifyContent: 'center' },
-  goalLabel: { color: colors.text, fontWeight: '700', fontSize: 12, marginBottom: 4 },
-  track: { height: 8, borderRadius: radius.pill, backgroundColor: colors.border, overflow: 'hidden' },
-  fill: { height: 8, backgroundColor: colors.green, borderRadius: radius.pill },
+  row: { flexDirection: 'row', alignItems: 'center', gap: space.md, marginBottom: space.md },
+  chip: { fontSize: 16, fontWeight: '800' },
+  goal: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: space.sm },
+  bar: { flex: 1, height: 14, borderRadius: radius.pill, backgroundColor: colors.border, overflow: 'hidden' },
+  fill: { height: '100%', backgroundColor: colors.cta, borderRadius: radius.pill },
+  goalText: { color: colors.muted, fontWeight: '800', fontSize: 12 },
 });
