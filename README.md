@@ -32,7 +32,7 @@
 ## Layout
 
 ```
-apps/mobile/          Expo app shell
+apps/mobile/          Expo app shell (scaffold exists: Home, Paths, Wallet stub)
 src/
   gamification/       XP, streaks, daily goal stubs
   wallet/             MWA connect stub (no sign / broadcast)
